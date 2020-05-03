@@ -1,0 +1,22 @@
+PODS:
+  - applegooglepay (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - applegooglepay (from `.symlinks/plugins/applegooglepay/ios`)
+  - Flutter (from `Flutter`)
+
+EXTERNAL SOURCES:
+  applegooglepay:
+    :path: ".symlinks/plugins/applegooglepay/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  applegooglepay: 5b06556b838c3b75edc2a4671c1f05b262fac711
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+
+PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+
+COCOAPODS: 1.9.1
