@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
         onSuccess: (String msg) {
           _showToast(scaffoldContext, msg);
         },
-        proccessing: (String data) async {
+        proccessing: (String data,String orderId) async {
           return true;
         },
       );
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
           {'label': 'Bred', 'amount': 10.0},
           {'label': 'Mill', 'amount': 20.0}
         ],
-        proccessing: (String data) async {
+        proccessing: (String data, String orderId) async {
           return true;
         },
       );

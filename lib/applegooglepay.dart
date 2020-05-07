@@ -10,11 +10,12 @@ Future<void> makeGooglePayment({
   double amount,
   String merchantID,
   String gateway,
+  String orderId,
   String currency = 'UAH',
   bool isTest = true,
   Future<void> onSuccess(String msg),
   Future<void> onError(String msg),
-  Future<bool> proccessing(String data),
+  Future<bool> proccessing(String data, String orderId),
 }) async {
   if (Platform.isAndroid) {
     var environment = isTest ? 'test' : 'production';
@@ -34,7 +35,7 @@ Future<void> makeGooglePayment({
       google.GooglePay.makePayment(pb.build())
           .then((google.Result result) async {
         if (result.status == google.ResultStatus.SUCCESS) {
-          bool request = await proccessing(result.data.toString());
+          bool request = await proccessing(result.data.toString(), orderId);
           if (request)
             onSuccess('Success');
           else
@@ -54,8 +55,9 @@ Future<void> makeApplePayment({
   String merchantName,
   String countryCode = 'UA',
   String currencyCode = 'UAH',
+  String orderId,
   List<Map> items,
-  Future<bool> proccessing(String data),
+  Future<bool> proccessing(String data,String orderId),
 }) async {
   if (Platform.isIOS) {
     bool paymentResult = false;
@@ -63,6 +65,7 @@ Future<void> makeApplePayment({
 
     try {
       paymentResult = await p.makePayment(
+          orderId: orderId,
           countryCode: countryCode,
           currencyCode: currencyCode,
           paymentNetworks: [

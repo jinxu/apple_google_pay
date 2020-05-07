@@ -16,6 +16,7 @@ class ApplePay {
         @required List<PaymentNetwork> paymentNetworks,
         @required String merchantIdentifier,
         @required String merchantName,
+        String orderId,
         bool isPending = false,
         @required List<PaymentItem> paymentItems,
         Function proceedPayment}) async {
@@ -46,7 +47,7 @@ class ApplePay {
 
       bool paymentResult = false;
       if (decoded['status'] == 'ok') {
-        paymentResult = await proceedPayment(decoded['data']);
+        paymentResult = await proceedPayment(decoded['data'], orderId);
         closeApplePaySheet(isSuccess: paymentResult);
       }
       return paymentResult;
