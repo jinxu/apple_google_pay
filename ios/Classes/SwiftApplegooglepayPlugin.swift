@@ -189,6 +189,10 @@ public class SwiftApplegooglepayPlugin: NSObject, FlutterPlugin, PKPaymentAuthor
                 
         let data: NSDictionary = ["data":  payment.token.paymentData.base64EncodedString(),
                                   "token": payment.token.transactionIdentifier,
+                                  "displayName": payment.token.paymentMethod.displayName,
+                                  "type":payment.token.paymentMethod.type.rawValue,
+                                  "network":payment.token.paymentMethod.network?.rawValue,
+
                                   "status":"ok"]
         let jsonData = try? JSONSerialization.data(withJSONObject: data, options: [])
         let jsonString = String(data: jsonData!, encoding: .utf8) ?? "{status:error}"
